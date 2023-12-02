@@ -60,14 +60,7 @@
                         @endif
                     </div>
 
-                    <!-- <form method="POST" action="/upload" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="comment">画像</label>
-                    <input type="file" id="file" name="file" class="form-control" />
-
-                    
-                    </form> -->
+                   
 
 
                     <div class="form-group">
@@ -89,14 +82,10 @@
                         
 
 
-                        <!-- required.blade.phpにifがあるので一旦コメントアウト -->
-                        <!-- @if($errors->has('comment'))
-                            <p>{{ $errors->first('comment') }}</p>
-                        @endif -->
+                        
                     </div>
                    
-                    <!-- <input type="file" name="image"> -->
-                    
+                   
 
 
                 

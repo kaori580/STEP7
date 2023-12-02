@@ -66,6 +66,7 @@
         <div class="form-group">
             <label for="image">{{ __('画像') }}</label>
             <input type="file" id="file" name="image" class="form-control" >
+            
         </div>
 
         
@@ -98,10 +99,7 @@
 
 
 
-<!-- 戻るボタン
-<div class="detailback">
-        <input class="btn btn-primary" type="button" onclick="history.back(-1)" value="戻る">
-</div> -->
+
 
 
 @endsection

@@ -9,12 +9,7 @@ use Illuminate\Support\Facades\DB;
 class products extends Model
 {
     use HasFactory;
-    // public function getList() {
-    //     // productsテーブルからデータを取得
-    //     $products = DB::table('products')->get();
-
-    //     return $products;
-    // }
+   
 
     // カラムのホワイトリストの指定
         // モデルに関連付けるテーブル
@@ -77,47 +72,9 @@ class products extends Model
 
    
 
-        // public function registProduct($data) {
-            
-        //     // 登録処理
-        //     DB::table($this->table)->insert([
-        //         'product_name' => $data->product_name,
-        //         'company_id' =>$data->company_id,
-        //         'price'=>$data->price,
-        //         'stock'=>$data->stock,
-        //         // 'img_path'=>$data->file,
-        //         'comment' => $data->comment,
-        //         'created_at'=> now(),
-        //         'updated_at' => now(),
-        //     ]);
-            
-           
-        // }
-
-
+       
     
-    // protected $guarded = array ('id');
-    // public static $rules = array(
-    //     'products_name' => 'required',
-    //         // 'company_id' => ,
-    //         'price'=>'integer',
-    //         'stock'=>'integer' ,
-    //         // 'comment' => ,
-    //         // 'created_at'=> ,
-    //         // 'updated_at' => ,
-    //     // 'products_name' => $data->products_name,
-    //     //     'company_id' =>$data->company_id,
-    //     //     'price'=>$data->price,
-    //     //     'stock'=>$data->stock,
-    //     //     // 'img_path'=>$data->file,
-    //     //     'comment' => $data->comment,
-    //     //     'created_at'=> now(),
-    //     //     'updated_at' => now(),
-    // );
-    // public function getDate()
-    // {
-    //     return $this -> products_name.':'. $this -> company_id.':'. $this -> price.':'. $this -> stock.':'. $this -> comment.':'. $this -> created_at.'('. $this -> updated_at.')';
-    // }
+   
 
 
     // 商品一覧画面の検索機能
@@ -173,18 +130,37 @@ class products extends Model
             'price'=>$data['price'],
             'stock'=>$data['stock'],
             'img_path'=>$data['img_path'],
+
             'comment' => $data['comment'],
             
             'updated_at' => now(),
+
+
         ]);
+    }
+        
+    public function notUpdateProduct($data, $id) {
+        // dd($data);
+        // 登録処理
+        DB::table('products')
+        ->where('products.id', '=', $id)
+        ->update([
+            'product_name' => $data['product_name'],
+            'company_id' =>$data['company_id'],
+            'price'=>$data['price'],
+            'stock'=>$data['stock'],
+            
+
+            'comment' => $data['comment'],
+            
+            'updated_at' => now(),
+
+            
+        ]);
+    }
         
 
-        // $result = $data->fill([
-        //     'product_name' => $data->book_name
-        // ])->save();
-
-        // return $result;
-    }
+       
 
 
 
