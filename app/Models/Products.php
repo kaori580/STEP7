@@ -30,7 +30,7 @@ class products extends Model
         ];
 
         //ソートするカラムを記入
-     public $sortable = ['product_name', 'company_id', 'price', 'stock'];
+    //  public $sortable = ['product_name', 'company_id', 'price', 'stock'];
         /**
              * 一覧画面表示用にbooksテーブルから全てのデータを取得
              */
@@ -83,17 +83,20 @@ class products extends Model
     // 商品一覧画面の検索機能
     public function Search($keyword, $company_id)
     {
-         $products =  DB::table('products')
-         ->join('companies', 'company_id', '=', 'companies.id')
-         ->select('products.*', 'companies.company_name');
-         if($keyword){
-            $products->where('products.product_name', 'like', '%'.$keyword.'%');
-         }
-         if($company_id){
-            $products->where('products.company_id', '=', $company_id);
-         }
+        $products = DB::table('products')
+        ->join('companies', 'products.company_id', '=', 'companies.id')
+        ->select('products.*', 'companies.company_name');
+        if($keyword){
+        $products->where('products.product_name', 'like', '%'.$keyword.'%');
+        }
+        if($company_id){
+        $products->where('products.company_id', '=', $company_id);
+        }
 
-         $query = Products::query();
+
+
+
+         $query = products::query();
 
          if((isset($minPrice)) && (isset($maxPrice))) {
             $query->whereBetween('price',[$minPrice, $maxPrice]);
@@ -111,15 +114,56 @@ class products extends Model
             $query->where('stock', '<=', $maxStock);
         }
 
-        if(empty($keyword) && empty($companyId) && empty($minPrice) && empty($maxPrice) && empty($minStock) && empty($maxStock)) {
-         $products = Products::sortable()->get();
-        }else{
-         $products = $query->sortable()->get();
-        }
 
-         $products=$products->get();
 
-         return $products;
+
+
+        $products = $products->get();
+
+        return $products;
+
+
+
+
+
+
+        //  $products =  DB::table('products')
+        //  ->join('companies', 'company_id', '=', 'companies.id')
+        //  ->select('products.*', 'companies.company_name');
+        //  if($keyword){
+        //     $products->where('products.product_name', 'like', '%'.$keyword.'%');
+        //  }
+        //  if($company_id){
+        //     $products->where('products.company_id', '=', $company_id);
+        //  }
+
+        //  $query = Products::query();
+
+        //  if((isset($minPrice)) && (isset($maxPrice))) {
+        //     $query->whereBetween('price',[$minPrice, $maxPrice]);
+        // } elseif(isset($minPrice)) {
+        //     $query->where('price', '>=', $minPrice);
+        // } elseif(isset($maxPrice)) {
+        //     $query->where('price', '<=', $maxPrice);
+        // }
+
+        // if((isset($minStock)) && (isset($maxStock))) {
+        //     $query->whereBetween('stock',[$minStock, $maxStock]);
+        // } elseif(isset($minStock)) {
+        //     $query->where('stock', '>=', $minStock);
+        // } elseif(isset($maxStock)) {
+        //     $query->where('stock', '<=', $maxStock);
+        // }
+
+        // if(empty($keyword) && empty($companyId) && empty($minPrice) && empty($maxPrice) && empty($minStock) && empty($maxStock)) {
+        //  $products = Products::sortable()->get();
+        // }else{
+        //  $products = $query->sortable()->get();
+        // }
+
+        //  $products=$products->get();
+
+        //  return $products;
     }
 
 

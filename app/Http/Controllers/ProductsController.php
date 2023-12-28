@@ -19,15 +19,31 @@ class ProductsController extends Controller
     // 商品情報画面
     public function showList(Request $request) {
         // インスタンス生成
+        // $model = new products();
+        // $products = $model->getList();
+        // $companies = new Company;
+        // $allcompany = $companies->getCreate();
+        // return view('list', ['products' => $products],['allcompany' => $allcompany]);
+
+
+
+
+        $keyword = $request->input('keyword');
+        $company_id = $request->input('company_id');
+    
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
+        $minStock = $request->input('minStock');
+        $maxStock = $request->input('maxStock');
+
         $model = new products();
-        $products = $model->getList();
-        $companies = new Company;
+        $companies = new Company();
+        $products = $model->Search($keyword, $company_id);
+        
         $allcompany = $companies->getCreate();
-
-            
-
-
-        return view('list', ['products' => $products],['allcompany' => $allcompany]);
+        // dd($keyword);
+        
+        return view('list', ['products'=> $products], ['allcompany'=> $allcompany],['price'=> $request->minPrice]);
     }
     
     // 商品情報登録画面
@@ -183,14 +199,20 @@ class ProductsController extends Controller
     
     public function Search(Request $request){
         // dd($request);
+       
         $keyword = $request->input('keyword');
         $company_id = $request->input('company_id');
-        $model = new Products();
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
+        $minStock = $request->input('minStock');
+        $maxStock = $request->input('maxStock');
+        $model = new products();
         $companies = new Company();
         $products = $model->Search($keyword, $company_id);
         
         $allcompany = $companies->getCreate();
         // dd($keyword);
+        
         return view('list', ['products'=> $products], ['allcompany'=> $allcompany],['price'=> $request->minPrice]);
     } 
     
