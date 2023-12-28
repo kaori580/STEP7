@@ -30,11 +30,11 @@ class ProductsRequest extends FormRequest
 
         // ↓ここ直す
         'product_name' => 'required | max:255',
-        'company_id' => 'required',
-        'price' => 'required | max:255',
-        'stock' => 'required | max:255',
+        'company_id' => 'required ',
+        'price' => 'required |numeric|min:0',
+        'stock' => 'required |numeric|min:0',
         'image' => 'nullable',
-        'comment' => 'nullable | max:1000',
+        'comment' => 'nullable | max:255',
           
           
     ];

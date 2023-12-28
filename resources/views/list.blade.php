@@ -1,5 +1,11 @@
-@extends('layouts.listlayout')
+@extends('layouts.listLayout')
 @section('title', '商品情報画面')
+
+@section('scripts')
+   
+  
+@endsection
+
 
 @section('content')
 <!--検索フォーム-->
@@ -23,10 +29,10 @@
             
                 
                 <div class="form-group">
-                    <input type="key" name="keyword" class="form-control" placeholder="キーワードを入力">
+                    <input type="key" id="keyword" name="keyword" class="form-control" placeholder="キーワードを入力">
                 </div>
                 <div class="good1">
-                    <input type="submit" value="検索" class="btn btn-info">
+                    <input type="submit" value="検索" class="btn btn-info" id="search-btn">
 
                 </div>
             
@@ -34,6 +40,15 @@
     </div>
 
 </div>
+
+<div>
+          <input type="number" name="min_price" id="minPrice" placeholder="最低価格">
+          <input type="number" name="max_price" id="maxPrice" placeholder="最高価格">
+        </div>
+        <div>
+          <input type="number" name="min_stock" id="minStock" placeholder="最低在庫数">
+          <input type="number" name="max_stock" id="maxStock" placeholder="最高在庫数">
+        </div>
 </form>
 <!-- 新規フォーム -->
 <form class="form-inline" action="{{ route('regist') }}" method="get">
@@ -43,7 +58,7 @@
 </form>
 
 <!-- データ -->
-<div class="links">
+<div class="links" id="step7table">
     <table class="table table-hover">
     
         <thead>
@@ -89,7 +104,7 @@
     
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 

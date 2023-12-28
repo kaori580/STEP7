@@ -39,6 +39,7 @@ Route::get('/detail/edit/{id}', [App\Http\Controllers\ProductsController::class,
 Route::post('/detail/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('update');
 
 // 検索機能のルーティング
+Route::get('/search', [App\Http\Controllers\ProductsController::class, 'Search'])->name('search');
 Route::post('/search', [App\Http\Controllers\ProductsController::class, 'Search'])->name('search');
 
 // 削除ボタンのルーティング

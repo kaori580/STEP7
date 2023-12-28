@@ -28,6 +28,9 @@ class products extends Model
             'created_at',
             'updated_at'
         ];
+
+        //ソートするカラムを記入
+     public $sortable = ['product_name', 'company_id', 'price', 'stock'];
         /**
              * 一覧画面表示用にbooksテーブルから全てのデータを取得
              */
@@ -89,6 +92,31 @@ class products extends Model
          if($company_id){
             $products->where('products.company_id', '=', $company_id);
          }
+
+         $query = Products::query();
+
+         if((isset($minPrice)) && (isset($maxPrice))) {
+            $query->whereBetween('price',[$minPrice, $maxPrice]);
+        } elseif(isset($minPrice)) {
+            $query->where('price', '>=', $minPrice);
+        } elseif(isset($maxPrice)) {
+            $query->where('price', '<=', $maxPrice);
+        }
+
+        if((isset($minStock)) && (isset($maxStock))) {
+            $query->whereBetween('stock',[$minStock, $maxStock]);
+        } elseif(isset($minStock)) {
+            $query->where('stock', '>=', $minStock);
+        } elseif(isset($maxStock)) {
+            $query->where('stock', '<=', $maxStock);
+        }
+
+        if(empty($keyword) && empty($companyId) && empty($minPrice) && empty($maxPrice) && empty($minStock) && empty($maxStock)) {
+         $products = Products::sortable()->get();
+        }else{
+         $products = $query->sortable()->get();
+        }
+
          $products=$products->get();
 
          return $products;

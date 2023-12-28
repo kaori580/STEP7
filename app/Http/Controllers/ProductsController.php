@@ -70,12 +70,6 @@ class ProductsController extends Controller
             $insert_data['img_path'] = null;
         }
 
-        
-
-       
-
-        
-        
         // dd('test');
         // トランザクション開始
         DB::beginTransaction();
@@ -197,7 +191,7 @@ class ProductsController extends Controller
         
         $allcompany = $companies->getCreate();
         // dd($keyword);
-        return view('list', ['products'=> $products], ['allcompany'=> $allcompany]);
+        return view('list', ['products'=> $products], ['allcompany'=> $allcompany],['price'=> $request->minPrice]);
     } 
     
 
