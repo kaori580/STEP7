@@ -14,7 +14,7 @@
 
 
 
-<!--検索フォーム-->
+
 <script>
 $(document).ready(function() {
 $('#fav-table').tablesorter();
@@ -22,6 +22,8 @@ $('#fav-table').tablesorter();
 
 </script>
 
+
+<!--検索フォーム-->
 <form class="form-inline" action="{{ route('search') }}" method="POST">
 @csrf
 <div class="form-search">
@@ -137,6 +139,44 @@ $('#fav-table').tablesorter();
         }
     }
 </script>
+
+<!-- <script type="text/javascript">
+
+// トークンを送信する記述
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    }
+});
+
+// ここから非同期処理の記述
+$(function() {
+   
+              $('.btn btn-danger btn-dell').on('click', function() {
+                var deleteConfirm = confirm('削除してよろしいでしょうか？');
+                   if(deleteConfirm == true) {
+                      var clickEle = $(this)
+
+
+                      var userID = clickEle.attr('data-user_id');
+                          
+              $.ajax({
+                 type: 'POST',
+                 url: '/destroy/'+userID, 
+                 dataType: 'json',
+                 data: {'id':userID},
+                          })
+
+            } else {
+                    (function(e) {
+                      e.preventDefault()
+                    });
+            };
+      });
+});
+
+</script> -->
+
 
 
 

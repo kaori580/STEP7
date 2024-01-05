@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -33,8 +34,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css">
    <!-- 追加機能(widgets)を使用する場合は次も追加する -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.widgets.min.js"></script>
-
-    <script>
+    
+    <!-- <script>
     $(document).ready(function() 
     { 
         $("#step7table").tablesorter({
@@ -44,7 +45,7 @@
     ]
     });
     }); 
-    </script>
+    </script> -->
 </head>
 
 <body>

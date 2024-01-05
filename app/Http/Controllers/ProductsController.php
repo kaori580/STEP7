@@ -235,5 +235,20 @@ class ProductsController extends Controller
         return redirect()->route('list');
     }
 
+
+
+    // public function destroy(Request $request, Users $users) {
+
+    //     //ajaxメソッドから送信されたデータは$requestに格納されます
+    //     //ajas側で送信したデータの名前は"id"という名前に設定しているため
+    //     //コントローラーで使うには $request->id で出力します
+             
+    //                 $users = Users::findOrFail($request->id);
+    //     //データベースのUsersテーブルから()で指定されたiDのレコードを代入します
+    //                 $users->delete();
+    //     //usersに代入されているレコード（行）を削除します
+        
+    //         }
+        
 }
 
