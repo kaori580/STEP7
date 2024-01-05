@@ -10,7 +10,10 @@ $(function() {
           data: {
             'keyword': $('#keyword').val(),
             'company_id': $('#company_id').val(),
-           
+            'minPrice' : $( 'minPrice').val(),
+            'maxPrice' : $( 'maxPrice').val(),
+            'minStock' : $( 'minStock').val(),
+            'maxStock' : $( 'maxStock').val(),
 
           }
         })//通信成功時の処理

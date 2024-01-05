@@ -11,11 +11,15 @@
 
 
 
+
+
+
 <!--検索フォーム-->
 <script>
 $(document).ready(function() {
 $('#fav-table').tablesorter();
 });
+
 </script>
 
 <form class="form-inline" action="{{ route('search') }}" method="POST">

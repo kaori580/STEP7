@@ -25,7 +25,7 @@ class ProductsController extends Controller
         // $allcompany = $companies->getCreate();
         // return view('list', ['products' => $products],['allcompany' => $allcompany]);
 
-
+        
 
 
         $keyword = $request->input('keyword');
