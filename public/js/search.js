@@ -24,6 +24,11 @@ $(function() {
       //   let newtable=$(response).find('#step7table')
       //   $('#step7table').html(newtable)
     // }) 
+    $(document).ready(function() {
+      $('#fav-table').tablesorter();
+      })
+
+
         .done(function(data){
           console.log('ううう');
           let newtable = $(data).find('#step7table')

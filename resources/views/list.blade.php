@@ -26,37 +26,37 @@ $('#fav-table').tablesorter();
 <!--検索フォーム-->
 <form class="form-inline" action="{{ route('search') }}" method="POST">
 @csrf
-<div class="form-search">
-   <label for="company_id">{{ __('メーカー名') }} <span class="badge badge-danger ml-2"></span></label>
-    <select class="form-control" id="company_id" name="company_id">
-        @foreach ($allcompany as $company)
-            <option hidden value="">選択してください</option>
-            <option value="{{ $company->id }}">{{  $company->company_name }}</option>
-        @endforeach
-    </select>
-</div>
-
-
-<div class="search">
-    <p>商品名検索</p>
-    <div>
-        <div class="post-search-form col-md-6">
-            
-                
-                <div class="form-group">
-                    <input type="key" id="keyword" name="keyword" class="form-control" placeholder="キーワードを入力">
-                </div>
-                <div class="good1">
-                    <input type="submit" value="検索" class="btn btn-info" id="search-btn">
-
-                </div>
-            
-        </div>
+    <div class="form-search">
+    <label for="company_id">{{ __('メーカー名') }} <span class="badge badge-danger ml-2"></span></label>
+        <select class="form-control" id="company_id" name="company_id">
+            @foreach ($allcompany as $company)
+                <option hidden value="">選択してください</option>
+                <option value="{{ $company->id }}">{{  $company->company_name }}</option>
+            @endforeach
+        </select>
     </div>
 
-</div>
 
-<div>
+    <div class="search">
+        <p>商品名検索</p>
+        <div>
+            <div class="post-search-form col-md-6">
+                
+                    
+                    <div class="form-group">
+                        <input type="key" id="keyword" name="keyword" class="form-control" placeholder="キーワードを入力">
+                    </div>
+                    <div class="good1">
+                        <input type="submit" value="検索" class="btn btn-info" id="search-btn">
+
+                    </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+        <div>
           <input type="number" name="minPrice" id="minPrice" placeholder="最低価格">
           <input type="number" name="maxPrice" id="maxPrice" placeholder="最高価格">
         </div>
