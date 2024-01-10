@@ -15,12 +15,7 @@
 
 
 
-<script>
-$(document).ready(function() {
-$('#fav-table').tablesorter();
-});
 
-</script>
 
 
 <!--検索フォーム-->
@@ -74,7 +69,7 @@ $('#fav-table').tablesorter();
 
 <!-- データ -->
 <div class="links" id="step7table">
-    <table class="table table-hover">
+    <table class="table table-hover" id = "fav-table">
     
         <thead>
             <tr>
@@ -109,7 +104,11 @@ $('#fav-table').tablesorter();
                     @csrf
                         <input type="submit" class="btn btn-danger btn-dell" value="削除">
                     </form>
+
+                    
                 </td>
+
+
                 
             </tr>
         @endforeach
@@ -176,6 +175,8 @@ $(function() {
 });
 
 </script> -->
+
+
 
 
 

@@ -82,7 +82,7 @@ class products extends Model
 
 
     // 商品一覧画面の検索機能
-    public function Search($keyword, $company_id)
+    public function Search($keyword, $company_id,$minPrice,$maxPrice,$minStock,$maxStock)
     {
         $products = DB::table('products')
         ->join('companies', 'products.company_id', '=', 'companies.id')
@@ -97,22 +97,21 @@ class products extends Model
 
 
 
-         $query = products::query();
-
+        
          if((isset($minPrice)) && (isset($maxPrice))) {
-            $query->whereBetween('price',[$minPrice, $maxPrice]);
+            $products->whereBetween('price',[$minPrice, $maxPrice]);
         } elseif(isset($minPrice)) {
-            $query->where('price', '>=', $minPrice);
+            $products->where('price', '>=', $minPrice);
         } elseif(isset($maxPrice)) {
-            $query->where('price', '<=', $maxPrice);
+            $products->where('price', '<=', $maxPrice);
         }
 
         if((isset($minStock)) && (isset($maxStock))) {
-            $query->whereBetween('stock',[$minStock, $maxStock]);
+            $products->whereBetween('stock',[$minStock, $maxStock]);
         } elseif(isset($minStock)) {
-            $query->where('stock', '>=', $minStock);
+            $products->where('stock', '>=', $minStock);
         } elseif(isset($maxStock)) {
-            $query->where('stock', '<=', $maxStock);
+            $products->where('stock', '<=', $maxStock);
         }
 
 

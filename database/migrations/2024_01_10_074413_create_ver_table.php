@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('product_id')->unsigned();
+        
+        Schema::create('ver', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('version');
             $table->string('min_version');
             $table->timestamps();
-
-
-            
         });
     }
 
@@ -31,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('ver');
     }
 };
 

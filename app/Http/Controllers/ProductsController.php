@@ -38,7 +38,7 @@ class ProductsController extends Controller
 
         $model = new products();
         $companies = new Company();
-        $products = $model->Search($keyword, $company_id);
+        $products = $model->Search($keyword, $company_id,$minPrice,$maxPrice,$minStock,$maxStock);
         
         $allcompany = $companies->getCreate();
         // dd($keyword);
@@ -223,13 +223,18 @@ class ProductsController extends Controller
 
 
 
-    //削除処理
-    public function exeDelete($id)
-    {
-        // Booksテーブルから指定のIDのレコード1件を取得
-        $product = Products::find($id);
-        // レコードを削除
-        $product->delete();
+                //削除処理
+                public function exeDelete($id)
+                {
+                    // Booksテーブルから指定のIDのレコード1件を取得
+                    $product = Products::find($id);
+                    // レコードを削除
+                    $product->delete();
+
+                    
+                    
+                    
+
         // 指定されたIDのレコードを削除
         // 削除したら一覧画面にリダイレクト
         return redirect()->route('list');

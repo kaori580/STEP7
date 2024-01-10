@@ -39,11 +39,13 @@ Route::get('/detail/edit/{id}', [App\Http\Controllers\ProductsController::class,
 Route::post('/detail/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('update');
 
 // 検索機能のルーティング
-Route::get('/search', [App\Http\Controllers\ProductsController::class, 'Search'])->name('search');
-Route::post('/search', [App\Http\Controllers\ProductsController::class, 'Search'])->name('search');
+Route::get('/search', [App\Http\Controllers\ProductsController::class, 'showList'])->name('search');
 
 // 削除ボタンのルーティング
 Route::post('/list/delete/{id}', [App\Http\Controllers\ProductsController::class, 'exeDelete'])->name('delete');
 
 //商品情報画面の検索ルーティング
 // Route::post('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('detail');
+
+//APIのルーティング
+Route::get('Sale',[App\Http\Controllers\API\VerController::class, 'index']);
