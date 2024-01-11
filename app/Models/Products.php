@@ -53,7 +53,9 @@ class products extends Model
             }
 
             
-        
+            public function sale() {
+                return $this->hasMany('App\Models\Sale');
+            }
 
     
     // 商品情報新規登録画面送信

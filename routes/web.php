@@ -47,5 +47,3 @@ Route::post('/list/delete/{id}', [App\Http\Controllers\ProductsController::class
 //商品情報画面の検索ルーティング
 // Route::post('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('detail');
 
-//APIのルーティング
-Route::get('Sale',[App\Http\Controllers\API\VerController::class, 'index']);

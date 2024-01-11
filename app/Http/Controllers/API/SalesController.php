@@ -52,36 +52,50 @@ class SalesController extends Controller
 
                 try{
                     DB::beginTransaction();
-
+                    
+               
                     //リクエストから商品IDを取得
                     $productId = $request->input('product_id');
+                    
                     // dd($request);
                     $product = Products::find($productId); //リクエストから商品IDを取得
-
+                    
                     if(!$product) {
                         DB::rollBack();
                         return response()->json(['error' => '商品が存在しません']);
                     }
-
+                    
                     if($product->stock <= 0) {
                         DB::rollBack();
                         return response()->json(['error' => '在庫が不足しています']);
                     }
+                    
                     //Productsテーブルの在庫数を減らす
                     $product->stock -= 1;
                     $product->save();
-
                     $sale = new Sale();
                     $sale->product_id = $product->id;
+                    
                     $sale->save();
+                    //モデルの減算処理を呼び出す
+                    // $sale = new Sale();
+                    // $result = $sale->dec();
+                
+                    // return $result;
 
+
+                     
                     DB::commit();
                     return ['success' => true];
-
+                   
+                    
                 } catch (\Exception $e) {
                     DB::rollBack();
                     return ['error' => '購入処理に失敗しました'];
                 }
+
+                //return response()->json(['error' => '青い']);
+     
                 /*
                 if(isset($result->success)) {
                     return response()->json($result, 200);

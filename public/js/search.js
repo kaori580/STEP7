@@ -62,8 +62,9 @@ $(function() {
 
    //削除機能 
     $(function() {
-      $(document).on("click", ".delete_id", function (e) {
+      $(".btn-dell").on("click", function (e) {
         e.preventDefault();
+        console.log("削除");
         var deleteMessage = confirm('削除してよろしいでしょうか？');
         if(deleteMessage == true) {
           var blog_element = $(this).parents('.content');
