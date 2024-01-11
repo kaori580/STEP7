@@ -102,7 +102,7 @@
                 <td>
                     <form method="POST" action="{{ route('delete', $product->id) }}" onsubmit="return checkDelete()">
                     @csrf
-                        <input type="submit" class="btn btn-danger btn-dell" value="削除">
+                        <input data-user_id="{{$product->id}}" type="submit" class="btn btn-danger btn-dell" value="削除">
                     </form>
 
                     

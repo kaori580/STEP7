@@ -67,19 +67,41 @@ $(function() {
         console.log("削除");
         var deleteMessage = confirm('削除してよろしいでしょうか？');
         if(deleteMessage == true) {
-          var blog_element = $(this).parents('.content');
-          var blog_id = blog_element.attr("data-blog-id");
-          var url = location.href + "/" + blog_id;
+          //var blog_element = $(this).parents('.content');
+          // var blog_id = blog_element.attr("data-blog-id");
+          
+          var clickEle = $(this)
+          var productID = clickEle.attr("data-user_id");
+
+          // var url = location.href + "/" + productID;
+          console.log('あいう');
+          
         $.ajax({
-          url: url,
-          type: "POST",
-          data: {'id': blog_id,
+          // url: url,
+          type: 'POST',
+          url: '/list/delete/'+productID, //userID にはレコードのIDが代入されています
+          data: {'id': productID,
           '_method': 'DELETE'} ,
           dataType: 'json'
         })
+        //”削除しても良いですか”のメッセージで”いいえ”を選択すると次に進み処理がキャンセルされます
+        } else {
+          (function(e) {
+            e.preventDefault()
+          })
+
         .done(function(data) {
           blog_element.remove();
         })
+
+
+
+        
+
+
+
+
+
     
         .fail(function() {
           alert('blog destroy error');

@@ -224,7 +224,7 @@ class ProductsController extends Controller
 
 
                 //削除処理
-                public function exeDelete($id)
+                public function exeDelete( Request  $request,  Products $products,$id)
                 {
                     // Booksテーブルから指定のIDのレコード1件を取得
                     $product = Products::find($id);
