@@ -79,7 +79,7 @@ $(function() {
         $.ajax({
           // url: url,
           type: 'POST',
-          url: '/list/delete/'+productID, //userID にはレコードのIDが代入されています
+          url: 'list/delete/'+productID, //userID にはレコードのIDが代入されています
           data: {'id': productID,
           '_method': 'DELETE'} ,
           dataType: 'json'
