@@ -34,9 +34,7 @@ class ProductsRequest extends FormRequest
         'price' => 'required |numeric|min:0',
         'stock' => 'required |numeric|min:0',
         'image' => 'nullable',
-        'comment' => 'nullable | max:255',
-          
-          
+        'comment' => 'nullable | max:255',     
     ];
     }
 
@@ -60,7 +58,6 @@ class ProductsRequest extends FormRequest
             'price.max' => ':attributeは:max字以内で入力してください。',
             'stock.required'=> ':attributeは必須項目です。',
             'stock.max' => ':attributeは:max字以内で入力してください。',
-            
             'comment.max' => ':attributeは:max字以内で入力してください。',
         ];
     }

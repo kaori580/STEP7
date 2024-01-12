@@ -25,9 +25,6 @@ class ProductsController extends Controller
         // $allcompany = $companies->getCreate();
         // return view('list', ['products' => $products],['allcompany' => $allcompany]);
 
-        
-
-
         $keyword = $request->input('keyword');
         $company_id = $request->input('company_id');
     
@@ -107,12 +104,6 @@ class ProductsController extends Controller
         return redirect()->route('list');
     }
 
-
-
-    
-    
-
-
     //詳細画面
     public function showDetail($id){
         
@@ -138,16 +129,9 @@ class ProductsController extends Controller
 
     }
     
-
-
-   
-
         public function update(ProductsRequest $request,$id){
                    // ディレクトリ名
                     $dir = 'sample';
-
-                   
-                    
                     $update_data = [];
                     $update_data['company_id'] = (int)$request->input('company_id');
                     $update_data['product_name'] = $request->input('product_name');
@@ -193,10 +177,7 @@ class ProductsController extends Controller
                     // 処理が完了したらregistにリダイレクト
                     return redirect()->route('list');
     }
-
-
-    
-    
+ 
     public function Search(Request $request){
         // dd($request);
        
@@ -216,44 +197,15 @@ class ProductsController extends Controller
         return view('list', ['products'=> $products], ['allcompany'=> $allcompany],['price'=> $request->minPrice]);
     } 
     
+    //削除処理
+    public function exeDelete( Request  $request,  Products $products,$id)
+    {
+        // Booksテーブルから指定のIDのレコード1件を取得
+        $product = Products::find($id);
+        // レコードを削除
+        $product->delete();
 
-
-    
-
-
-
-
-                //削除処理
-                public function exeDelete( Request  $request,  Products $products,$id)
-                {
-                    // Booksテーブルから指定のIDのレコード1件を取得
-                    $product = Products::find($id);
-                    // レコードを削除
-                    $product->delete();
-
-                    
-                    
-                    
-
-        // 指定されたIDのレコードを削除
-        // 削除したら一覧画面にリダイレクト
-        return redirect()->route('list');
     }
-
-
-
-    // public function destroy(Request $request, Users $users) {
-
-    //     //ajaxメソッドから送信されたデータは$requestに格納されます
-    //     //ajas側で送信したデータの名前は"id"という名前に設定しているため
-    //     //コントローラーで使うには $request->id で出力します
-             
-    //                 $users = Users::findOrFail($request->id);
-    //     //データベースのUsersテーブルから()で指定されたiDのレコードを代入します
-    //                 $users->delete();
-    //     //usersに代入されているレコード（行）を削除します
-        
-    //         }
         
 }
 

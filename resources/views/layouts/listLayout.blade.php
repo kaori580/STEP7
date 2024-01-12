@@ -35,17 +35,7 @@
    <!-- 追加機能(widgets)を使用する場合は次も追加する -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.widgets.min.js"></script>
     
-    <!-- <script>
-    $(document).ready(function() 
-    { 
-        $("#step7table").tablesorter({
-            sortList: [
-      [0,0],
-      [1,0]
-    ]
-    });
-    }); 
-    </script> -->
+    
 </head>
 
 <body>

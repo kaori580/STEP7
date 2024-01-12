@@ -44,9 +44,6 @@ $(function() {
 
         })
            
-
-    
-
       .fail((error) => {
         console.log('失敗');
         alert('失敗');
@@ -67,7 +64,7 @@ $(function() {
         console.log("削除");
         var deleteMessage = confirm('削除してよろしいでしょうか？');
         if(deleteMessage == true) {
-          //var blog_element = $(this).parents('.content');
+          var blog_element = $(this).parents('.content');
           // var blog_id = blog_element.attr("data-blog-id");
           
           var clickEle = $(this)
@@ -76,36 +73,31 @@ $(function() {
           // var url = location.href + "/" + productID;
           console.log('あいう');
           
-        $.ajax({
-          // url: url,
-          type: 'POST',
-          url: 'list/delete/'+productID, //userID にはレコードのIDが代入されています
-          data: {'id': productID,
-          '_method': 'DELETE'} ,
-          dataType: 'json'
-        })
+          $.ajax({
+            // url: url,
+            type: 'POST',
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            url: 'list/delete/'+productID, //userID にはレコードのIDが代入されています
+            data: {'id': productID,
+            '_method': 'DELETE'} ,
+            
+          })
+          .done(function(data) {
+            clickEle.parents('tr').remove();
+          })
+      
+          .fail(function() {
+            alert('blog destroy error');
+          })
         //”削除しても良いですか”のメッセージで”いいえ”を選択すると次に進み処理がキャンセルされます
         } else {
           (function(e) {
             e.preventDefault()
           })
 
-        .done(function(data) {
-          blog_element.remove();
-        })
-
-
-
         
-
-
-
-
-
-    
-        .fail(function() {
-          alert('blog destroy error');
-        })
       }
       });
     }); 

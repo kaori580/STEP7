@@ -2,21 +2,10 @@
 @section('title', '商品情報画面')
 
 @section('scripts')
-   
-  
+     
 @endsection
 
-
 @section('content')
-
-
-
-
-
-
-
-
-
 
 <!--検索フォーム-->
 <form class="form-inline" action="{{ route('search') }}" method="POST">
@@ -30,7 +19,6 @@
             @endforeach
         </select>
     </div>
-
 
     <div class="search">
         <p>商品名検索</p>
@@ -103,29 +91,14 @@
                     <form method="POST" action="{{ route('delete', $product->id) }}" onsubmit="return checkDelete()">
                     @csrf
                         <input data-user_id="{{$product->id}}" type="submit" class="btn btn-danger btn-dell" value="削除">
-                    </form>
-
-                    
+                    </form> 
                 </td>
-
-
-                
             </tr>
         @endforeach
         </tbody>
     </table>
 </div>
     
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
- -->
-
-
-
-
 @endsection
 
 <!-- JavaScriptバリテーション -->
@@ -138,43 +111,6 @@
         }
     }
 </script>
-
-<!-- <script type="text/javascript">
-
-// トークンを送信する記述
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    }
-});
-
-// ここから非同期処理の記述
-$(function() {
-   
-              $('.btn btn-danger btn-dell').on('click', function() {
-                var deleteConfirm = confirm('削除してよろしいでしょうか？');
-                   if(deleteConfirm == true) {
-                      var clickEle = $(this)
-
-
-                      var userID = clickEle.attr('data-user_id');
-                          
-              $.ajax({
-                 type: 'POST',
-                 url: '/destroy/'+userID, 
-                 dataType: 'json',
-                 data: {'id':userID},
-                          })
-
-            } else {
-                    (function(e) {
-                      e.preventDefault()
-                    });
-            };
-      });
-});
-
-</script> -->
 
 
 

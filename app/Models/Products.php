@@ -29,59 +29,50 @@ class products extends Model
             'updated_at'
         ];
 
-        //ソートするカラムを記入
+    //ソートするカラムを記入
     //  public $sortable = ['product_name', 'company_id', 'price', 'stock'];
         /**
-             * 一覧画面表示用にbooksテーブルから全てのデータを取得
-             */
-            public function findAllProducts()
-            {
-                return products::all();
-            }
+     * 一覧画面表示用にbooksテーブルから全てのデータを取得
+     */
+    public function findAllProducts()
+    {
+        return products::all();
+    }
 
-            public function InsertProduct($request)
-            {
-                // リクエストデータを基に管理マスターユーザーに登録する
-                return $this->create([
-                    'product_name'             => $request->product_name,
-                    'company_id'                => $request->company_id,
-                    'price'                     => $request->price,
-                    'stock'                     => $request->stock,
-                    'comment'                   => $request->comment,
-                   
-                ]);
-            }
-
+    public function InsertProduct($request)
+    {
+        // リクエストデータを基に管理マスターユーザーに登録する
+        return $this->create([
+            'product_name'             => $request->product_name,
+            'company_id'                => $request->company_id,
+            'price'                     => $request->price,
+            'stock'                     => $request->stock,
+            'comment'                   => $request->comment,
             
-            public function sale() {
-                return $this->hasMany('App\Models\Sale');
-            }
+        ]);
+    }
+
+    
+    public function sale() {
+        return $this->hasMany('App\Models\Sale');
+    }
 
     
     // 商品情報新規登録画面送信
-
-
-        public function registProduct($data) {
-            // dd($data);
-            // 登録処理
-            DB::table('products')->insert([
-                'product_name' => $data['product_name'],
-                'company_id' =>$data['company_id'],
-                'price'=>$data['price'],
-                'stock'=>$data['stock'],
-                'img_path'=>$data['img_path'],
-                'comment' => $data['comment'],
-                'created_at'=> now(),
-                'updated_at' => now(),
-            ]);
-        }
-
-   
-
-       
-    
-   
-
+    public function registProduct($data) {
+        // dd($data);
+        // 登録処理
+        DB::table('products')->insert([
+            'product_name' => $data['product_name'],
+            'company_id' =>$data['company_id'],
+            'price'=>$data['price'],
+            'stock'=>$data['stock'],
+            'img_path'=>$data['img_path'],
+            'comment' => $data['comment'],
+            'created_at'=> now(),
+            'updated_at' => now(),
+        ]);
+    }
 
     // 商品一覧画面の検索機能
     public function Search($keyword, $company_id,$minPrice,$maxPrice,$minStock,$maxStock)
@@ -96,10 +87,6 @@ class products extends Model
         $products->where('products.company_id', '=', $company_id);
         }
 
-
-
-
-        
          if((isset($minPrice)) && (isset($maxPrice))) {
             $products->whereBetween('price',[$minPrice, $maxPrice]);
         } elseif(isset($minPrice)) {
@@ -116,60 +103,12 @@ class products extends Model
             $products->where('stock', '<=', $maxStock);
         }
 
-
-
-
-
         $products = $products->get();
 
         return $products;
-
-
-
-
-
-
-        //  $products =  DB::table('products')
-        //  ->join('companies', 'company_id', '=', 'companies.id')
-        //  ->select('products.*', 'companies.company_name');
-        //  if($keyword){
-        //     $products->where('products.product_name', 'like', '%'.$keyword.'%');
-        //  }
-        //  if($company_id){
-        //     $products->where('products.company_id', '=', $company_id);
-        //  }
-
-        //  $query = Products::query();
-
-        //  if((isset($minPrice)) && (isset($maxPrice))) {
-        //     $query->whereBetween('price',[$minPrice, $maxPrice]);
-        // } elseif(isset($minPrice)) {
-        //     $query->where('price', '>=', $minPrice);
-        // } elseif(isset($maxPrice)) {
-        //     $query->where('price', '<=', $maxPrice);
-        // }
-
-        // if((isset($minStock)) && (isset($maxStock))) {
-        //     $query->whereBetween('stock',[$minStock, $maxStock]);
-        // } elseif(isset($minStock)) {
-        //     $query->where('stock', '>=', $minStock);
-        // } elseif(isset($maxStock)) {
-        //     $query->where('stock', '<=', $maxStock);
-        // }
-
-        // if(empty($keyword) && empty($companyId) && empty($minPrice) && empty($maxPrice) && empty($minStock) && empty($maxStock)) {
-        //  $products = Products::sortable()->get();
-        // }else{
-        //  $products = $query->sortable()->get();
-        // }
-
-        //  $products=$products->get();
-
-        //  return $products;
+        
     }
 
-
-  
     //商品一覧画面表示
     public function getList() {
         $products = DB::table('products')
@@ -223,21 +162,11 @@ class products extends Model
             'company_id' =>$data['company_id'],
             'price'=>$data['price'],
             'stock'=>$data['stock'],
-            
-
             'comment' => $data['comment'],
-            
             'updated_at' => now(),
-
-            
         ]);
     }
         
-
-       
-
-
-
     //リクエストされたIDをもとにbooksデーブルのレコードを1件取得
     public function findProductById($id)
     {

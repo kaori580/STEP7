@@ -30,9 +30,7 @@
                 <td>{{ $products->company_name }}</td>
                 <td>{{ $products->comment }}</td>
                 <td><a href="{{ route('edit', $products->id) }}" class="btn btn-primary btm-sm">編集画面</a></td>
-                <td></td>
-
-                
+                <td></td>    
         </tr>
      
     </tbody>
