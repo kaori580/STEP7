@@ -1,7 +1,10 @@
 
 //htmlを読み込んだ後
 $(function() {
+  //関数読み込み
   loadSort();
+  exeDelete();
+  
   console.log('あああ');
     $('#search-btn').on('click',function(event) {
         event.preventDefault();//フォームの通常の通信キャンセル
@@ -41,6 +44,7 @@ $(function() {
           let newtable = $(data).find('#step7table')
           $('#step7table').replaceWith(newtable);
           loadSort();
+          exeDelete();
 
         })
            
@@ -57,8 +61,8 @@ $(function() {
     })}
 
 
-   //削除機能 
-    $(function() {
+  function exeDelete() {
+   
       $(".btn-dell").on("click", function (e) {
         e.preventDefault();
         console.log("削除");
@@ -100,4 +104,10 @@ $(function() {
         
       }
       });
-    }); 
+  }
+
+
+
+
+
+  

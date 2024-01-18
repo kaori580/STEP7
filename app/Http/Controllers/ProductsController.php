@@ -3,28 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
 use App\Models\Products;
 use App\Models\Company;
 use App\Http\Requests\ProductsRequest;
 use Illuminate\Support\Facades\DB;
-
-
-use App\Models\Image;
-
-
 
 class ProductsController extends Controller
 {
     // 商品情報画面
     public function showList(Request $request) {
         // インスタンス生成
-        // $model = new products();
-        // $products = $model->getList();
-        // $companies = new Company;
-        // $allcompany = $companies->getCreate();
-        // return view('list', ['products' => $products],['allcompany' => $allcompany]);
-
         $keyword = $request->input('keyword');
         $company_id = $request->input('company_id');
     
@@ -178,24 +166,8 @@ class ProductsController extends Controller
                     return redirect()->route('list');
     }
  
-    public function Search(Request $request){
-        // dd($request);
-       
-        $keyword = $request->input('keyword');
-        $company_id = $request->input('company_id');
-        $minPrice = $request->input('minPrice');
-        $maxPrice = $request->input('maxPrice');
-        $minStock = $request->input('minStock');
-        $maxStock = $request->input('maxStock');
-        $model = new products();
-        $companies = new Company();
-        $products = $model->Search($keyword, $company_id);
-        
-        $allcompany = $companies->getCreate();
-        // dd($keyword);
-        
-        return view('list', ['products'=> $products], ['allcompany'=> $allcompany],['price'=> $request->minPrice]);
-    } 
+    
+    
     
     //削除処理
     public function exeDelete( Request  $request,  Products $products,$id)
